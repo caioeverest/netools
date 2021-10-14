@@ -5,8 +5,8 @@ on: [push, pull_request]
 jobs:
   lint:
     runs-on: ubuntu-latest
-    env:
-      REPORT_ONLY: false
-      SHOW_ERRORS: true
     - name: linter
+      env:
+        REPORT_ONLY: false
+        SHOW_ERRORS: true
         run: bash <(curl -s https://raw.githubusercontent.com/CICDToolbox/shellcheck/master/pipeline.sh)
