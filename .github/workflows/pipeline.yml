@@ -1,12 +1,7 @@
-name: Run shellcheck for scripts
-
 on: [push, pull_request]
 
 jobs:
-  lint:
+  build:
     runs-on: ubuntu-latest
-    - name: linter
-      env:
-        REPORT_ONLY: false
-        SHOW_ERRORS: true
-        run: bash <(curl -s https://raw.githubusercontent.com/CICDToolbox/shellcheck/master/pipeline.sh)
+    - name: Run Shellcheck
+      run: bash <(curl -s https://raw.githubusercontent.com/CICDToolbox/shellcheck/master/pipeline.sh)
