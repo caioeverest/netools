@@ -1,7 +1,11 @@
+name: pipeline
 on: [push, pull_request]
 
 jobs:
-  build:
+  shellcheck:
+    name: ShellCheck
     runs-on: ubuntu-latest
-    - name: Run Shellcheck
-      run: bash <(curl -s https://raw.githubusercontent.com/CICDToolbox/shellcheck/master/pipeline.sh)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Shellcheck
+        run: bash <(curl -s https://raw.githubusercontent.com/CICDToolbox/shellcheck/master/pipeline.sh)
