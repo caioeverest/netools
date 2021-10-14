@@ -1,3 +1,3 @@
-module net-tools
+module net_tools
 
 go 1.14
