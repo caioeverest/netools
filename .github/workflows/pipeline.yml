@@ -6,6 +6,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     env:
+      REPORT_ONLY: false
       SHOW_ERRORS: true
     - name: linter
         run: bash <(curl -s https://raw.githubusercontent.com/CICDToolbox/shellcheck/master/pipeline.sh)
