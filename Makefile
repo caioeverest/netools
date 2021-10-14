@@ -12,3 +12,4 @@ ci-lint:
 	./bin/golangci-lint run; \
 
 clean:
+	rm -rf ./bin/example_cli;
