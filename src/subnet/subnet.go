@@ -3,11 +3,11 @@ package subnet
 import "github.com/spf13/cobra"
 
 const (
-	cliSubnet = "subnet"
+	cmdSubnet = "subnet"
 )
 
 var Subnet = &cobra.Command{
-	Use:   cliSubnet,
+	Use:   cmdSubnet,
 	Short: "Subnet CLI tool",
 	Long:  `CLI tools to perform subnet operations`,
 }

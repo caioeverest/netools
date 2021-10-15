@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	cliSubnetCalculate = "calculate"
+	cmdCalculate = "calculate"
 
 	cliInvalidArgsErr = "invalid arguments provided for subnet calculate cmd"
 )
@@ -61,7 +61,7 @@ func subNetCalculator(ipAddress, subnetMask string) (string, string, float64, st
 }
 
 var CalculateSubnet = &cobra.Command{
-	Use:   cliSubnetCalculate,
+	Use:   cmdCalculate,
 	Short: "CLI for subnet calculation operations",
 	Long:  "CLI for subnet calculation operations",
 	Run: func(cmd *cobra.Command, args []string) {
