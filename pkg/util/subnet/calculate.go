@@ -6,7 +6,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"netools/src/model/subnet"
+	"netools/pkg/model/subnet"
 )
 
 const (
