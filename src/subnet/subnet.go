@@ -36,6 +36,30 @@ func backtoIP4(ipInt uint32) string {
 	return b0 + "." + b1 + "." + b2 + "." + b3
 }
 
+func subNetCalculator(ipAddress, subnetMask string) (string, string, float64, string, int) {
+	ipInt := binary.BigEndian.Uint32(net.ParseIP(ipAddress)[12:16])
+	maskInt := binary.BigEndian.Uint32(net.ParseIP(subnetMask)[12:16])
+	maskArray := strings.Split(subnetMask, ".")
+	netInt := ipInt & maskInt
+
+	networkAddress := backtoIP4(netInt)
+	invertedMaskInt := binary.BigEndian.Uint32(net.ParseIP(maskArray[3] + "." + maskArray[2] + "." + maskArray[1] + "." + maskArray[0])[12:16])
+	broadcastInt := ipInt | invertedMaskInt
+
+	broadcastAddress := backtoIP4(broadcastInt)
+	cidrInt := NumOfSetBits(int(maskInt))
+	hostsFloat := math.Pow(2, float64(32-cidrInt)) - 2
+
+	noOfHosts := hostsFloat
+	quad255Int := binary.BigEndian.Uint32(net.ParseIP("255.255.255.255")[12:16])
+	wildcardInt := quad255Int - maskInt
+
+	wildcardMask := backtoIP4(wildcardInt)
+	cidrNotation := cidrInt
+
+	return networkAddress, broadcastAddress, noOfHosts, wildcardMask, cidrNotation
+}
+
 var Cli = &cobra.Command{
 	Use:   cliCmd,
 	Short: "CLI for subnet operations",
@@ -58,27 +82,15 @@ var Cli = &cobra.Command{
 			return
 		}
 
+		networkAddress, broadcastAddress, noOfHosts, wildcardMask, cidrNotation :=
+			subNetCalculator(ipAddress, subnetMask)
+
 		fmt.Println("IP address: ", ipAddress)
-		ipInt := binary.BigEndian.Uint32(net.ParseIP(ipAddress)[12:16])
 		fmt.Println("Subnet mask: ", subnetMask)
-
-		maskInt := binary.BigEndian.Uint32(net.ParseIP(subnetMask)[12:16])
-		maskArray := strings.Split(subnetMask, ".")
-		netInt := ipInt & maskInt
-
-		fmt.Println("Network address: ", backtoIP4(netInt))
-		invertedMaskInt := binary.BigEndian.Uint32(net.ParseIP(maskArray[3] + "." + maskArray[2] + "." + maskArray[1] + "." + maskArray[0])[12:16])
-		broadcastInt := ipInt | invertedMaskInt
-
-		fmt.Println("Broadcast address: ", backtoIP4(broadcastInt))
-		cidrInt := NumOfSetBits(int(maskInt))
-		hostsFloat := math.Pow(2, float64(32-cidrInt)) - 2
-
-		fmt.Println("Number of valid hosts per subnet: ", hostsFloat)
-		quad255Int := binary.BigEndian.Uint32(net.ParseIP("255.255.255.255")[12:16])
-		wildcardInt := quad255Int - maskInt
-
-		fmt.Println("Wildcard mask: ", backtoIP4(wildcardInt))
-		fmt.Println("Number of mask bits in CIDR notation: ", cidrInt)
+		fmt.Println("Network address: ", networkAddress)
+		fmt.Println("Broadcast address: ", broadcastAddress)
+		fmt.Println("Number of valid hosts per subnet: ", noOfHosts)
+		fmt.Println("Wildcard mask: ", wildcardMask)
+		fmt.Println("Number of mask bits in CIDR notation: ", cidrNotation)
 	},
 }
