@@ -1,7 +1,10 @@
 #!make
 
-all:
-	# Install all networking tools
+all: ci-lint
+	# Install netools
+	go build -ldflags '-w -s' -a -o ./bin/netools ./src/cmd/cmd.go; \
+    chmod +x ./bin/netools; \
+    echo 'netools is installed in the bin directory'
 
 ci-lint:
 	gofmt -s -w .; \
@@ -9,4 +12,4 @@ ci-lint:
 	./bin/golangci-lint run; \
 
 clean:
-	rm -rf ./bin/example_cli;
+	rm -rf ./bin/netools;
