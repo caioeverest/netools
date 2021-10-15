@@ -6,41 +6,22 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"netools/pkg/util/example"
-	"netools/pkg/util/subnet"
+	"netools/pkg/cmd/route"
 )
 
-// rootCmd represents the base command when called without any subcommands
-var rootCmd = &cobra.Command{
+// cmd represents the base command when called without any subcommands
+var cmd = &cobra.Command{
 	Use:   "netools",
 	Short: "Netools CLI App",
 	Long:  `Welcome to netools CLI`,
 }
 
 func init() {
-	// CLI and sub CLI's
-	rootCmd.AddCommand(example.CliExample)
-	rootCmd.AddCommand(subnet.Subnet)
-
-	example.CliExample.AddCommand(example.SubCliExampleWithArgs)
-
-	subnet.Subnet.AddCommand(subnet.CalculateSubnet)
-
-	// Cli flags
-	example.SubCliExampleWithArgs.PersistentFlags().StringP("message", "m", "", "example of sub cli with args")
-
-	subnet.CalculateSubnet.PersistentFlags().StringP("ipAddress", "i", "", "ip address")
-	subnet.CalculateSubnet.PersistentFlags().StringP("subnetMask", "s", "", "subnet mask")
-
-	// CLI flags marked as required
-	_ = example.SubCliExampleWithArgs.MarkPersistentFlagRequired("message")
-
-	_ = subnet.CalculateSubnet.MarkPersistentFlagRequired("ipAddress")
-	_ = subnet.CalculateSubnet.MarkPersistentFlagRequired("subnetMask")
+	route.Initialize(cmd)
 }
 
 func main() {
-	if err := rootCmd.Execute(); err != nil {
+	if err := cmd.Execute(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
