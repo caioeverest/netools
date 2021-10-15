@@ -14,7 +14,7 @@ import (
 const (
 	cliSubnetCalculate = "calculate"
 
-	cliInvalidArgsErr = "invalid arguments provided for subnet calculate cli"
+	cliInvalidArgsErr = "invalid arguments provided for subnet calculate cmd"
 )
 
 func NumOfSetBits(n int) int {
