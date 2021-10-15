@@ -26,9 +26,10 @@ func init() {
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 
 	// Example CLI
-	rootCmd.AddCommand(example.Cli)
-	example.Cli.PersistentFlags().StringP("message", "m", "", "example of cmd")
-	_ = example.Cli.MarkPersistentFlagRequired("message")
+	rootCmd.AddCommand(example.CliExample)
+	example.CliExample.AddCommand(example.SubCliExampleWithArgs)
+	example.SubCliExampleWithArgs.PersistentFlags().StringP("message", "m", "", "example of sub cli with args")
+	_ = example.SubCliExampleWithArgs.MarkPersistentFlagRequired("message")
 
 	// Subnet CLI
 	rootCmd.AddCommand(subnet.Subnet)

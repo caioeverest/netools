@@ -64,7 +64,6 @@ var CalculateSubnet = &cobra.Command{
 	Use:   cliSubnetCalculate,
 	Short: "CLI for subnet calculation operations",
 	Long:  "CLI for subnet calculation operations",
-	Args:  cobra.MaximumNArgs(100),
 	Run: func(cmd *cobra.Command, args []string) {
 		ipAddress, err := cmd.Flags().GetString("ipAddress")
 		if err != nil {
