@@ -5,7 +5,7 @@ This project focuses on developing network utilities that would be useful for IT
 
 If you have an idea for a utility that would be useful, please propose it by opening an issue.
 
-## Utilites
+### Utilities
 - Subnet calculator
 - Bulk SSH device configuration (Open issue)
 - More to come...
