@@ -2,7 +2,7 @@
 
 all: ci-lint
 	# Install netools
-	go build -ldflags '-w -s' -a -o ./bin/netools ./src/cmd/cmd.go; \
+	go build -ldflags '-w -s' -a -o ./bin/netools ./pkg/cmd/cmd.go; \
     chmod +x ./bin/netools; \
     echo 'netools is installed in the bin directory'
 
