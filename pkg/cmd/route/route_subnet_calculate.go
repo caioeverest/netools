@@ -22,6 +22,7 @@ var CmdCalculateSubnet = &cobra.Command{
 		ipAddress, err := cmd.Flags().GetString("ipAddress")
 		if err != nil {
 			fmt.Println(err)
+			return
 		}
 
 		subnetMask, err := cmd.Flags().GetString("subnetMask")
