@@ -1,7 +1,7 @@
 package cli
 
 import (
-	"net_tools/src/subnet"
+	"netools/src/subnet"
 )
 
 func init() {

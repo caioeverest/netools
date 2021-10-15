@@ -1,7 +1,7 @@
 package cli
 
 import (
-	"net_tools/src/example"
+	"netools/src/example"
 )
 
 func init() {

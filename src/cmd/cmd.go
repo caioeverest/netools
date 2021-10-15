@@ -1,6 +1,6 @@
 package main
 
-import "net_tools/src/cli"
+import "netools/src/cli"
 
 func main() {
 	cli.Execute()

@@ -1,4 +1,4 @@
-module net_tools
+module netools
 
 go 1.14
 
