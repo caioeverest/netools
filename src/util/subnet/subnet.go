@@ -8,6 +8,6 @@ const (
 
 var Subnet = &cobra.Command{
 	Use:   cmdSubnet,
-	Short: "Subnet CLI tool",
+	Short: "Subnet CLI util",
 	Long:  `CLI tools to perform subnet operations`,
 }

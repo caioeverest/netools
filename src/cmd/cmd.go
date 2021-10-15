@@ -6,8 +6,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"netools/src/example"
-	"netools/src/subnet"
+	"netools/src/util/example"
+	"netools/src/util/subnet"
 )
 
 // rootCmd represents the base command when called without any subcommands
