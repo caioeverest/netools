@@ -8,4 +8,6 @@ All ideas are encouraged! If you find any idea for a utility that would be usefu
 ### Utilities
 - Subnet calculator
 - Bulk SSH device configuration (Open issue)
+- Reverse Shell (Open issue)
+- Port scanner (Open issue)
 - More to come...
