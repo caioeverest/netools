@@ -10,4 +10,6 @@ All ideas are encouraged! If you find any idea for a utility that would be usefu
 - Bulk SSH device configuration (Open issue)
 - Reverse Shell (Open issue)
 - Port scanner (Open issue)
+- TCP Chat room (Open issue)
+- DDOS attack (Open issue)
 - More to come...
