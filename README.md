@@ -12,5 +12,5 @@ All ideas are encouraged! If you find any idea for a utility that would be usefu
 - Port scanner (Open issue)
 - TCP Chat room (Open issue)
 - DDOS attack (Open issue)
-- Speed test to test internet speed
+- Speed test for internet speed (Open issue)
 - More to come...
