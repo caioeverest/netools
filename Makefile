@@ -8,8 +8,8 @@ all: lint
 
 lint:
     gofmt -s -w .; \
-	chmod +x ./bin/golangci-lint; \
-	./bin/golangci-lint run; \
+    chmod +x ./bin/golangci-lint; \
+    ./bin/golangci-lint run; \
 
 clean:
     rm -rf ./bin/netools;
