@@ -14,4 +14,5 @@ All ideas are encouraged! If you find any idea for a utility that would be usefu
 - DDOS attack (Open issue)
 - Speed test for internet speed (Open issue)
 - Google from terminal (Open issue)
+- Work time tracker (Open issue)
 - More to come...
