@@ -5,7 +5,6 @@ import (
 	"math"
 	"net"
 	"strconv"
-	"strings"
 )
 
 func numOfSetBits(n int) int {
@@ -28,21 +27,20 @@ func backtoIP4(ipInt uint32) string {
 	return b0 + "." + b1 + "." + b2 + "." + b3
 }
 
-func Calculate(ipAddress, subnetMask string) (string, string, float64, string, int) {
+func Calculate(ipAddress, subnetMask string) (string, string, int, string, int) {
 	ipInt := binary.BigEndian.Uint32(net.ParseIP(ipAddress)[12:16])
 	maskInt := binary.BigEndian.Uint32(net.ParseIP(subnetMask)[12:16])
-	maskArray := strings.Split(subnetMask, ".")
 	netInt := ipInt & maskInt
 
 	networkAddress := backtoIP4(netInt)
-	invertedMaskInt := binary.BigEndian.Uint32(net.ParseIP(maskArray[3] + "." + maskArray[2] + "." + maskArray[1] + "." + maskArray[0])[12:16])
+	invertedMaskInt := ^maskInt
 	broadcastInt := ipInt | invertedMaskInt
 
 	broadcastAddress := backtoIP4(broadcastInt)
 	cidrInt := numOfSetBits(int(maskInt))
 	hostsFloat := math.Pow(2, float64(32-cidrInt)) - 2
 
-	noOfHosts := hostsFloat
+	noOfHosts := int(hostsFloat)
 	quad255Int := binary.BigEndian.Uint32(net.ParseIP("255.255.255.255")[12:16])
 	wildcardInt := quad255Int - maskInt
 
