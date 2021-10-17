@@ -27,9 +27,32 @@ func backtoIP4(ipInt uint32) string {
 	return b0 + "." + b1 + "." + b2 + "." + b3
 }
 
+func IsValidSubnetMask(n uint32) bool {
+	bitCount := 0
+	setBitCount := 0
+	for bitCount < 32 {
+		bit := n & 1
+		if setBitCount >= 1 {
+			if bit == 0 {
+				return false
+			}
+		} else {
+			if bit == 1 {
+				setBitCount += 1
+			}
+		}
+		n >>= 1
+		bitCount += 1
+	}
+	return true
+}
+
 func Calculate(ipAddress, subnetMask string) (string, string, int, string, int) {
 	ipInt := binary.BigEndian.Uint32(net.ParseIP(ipAddress)[12:16])
 	maskInt := binary.BigEndian.Uint32(net.ParseIP(subnetMask)[12:16])
+	if !IsValidSubnetMask(maskInt) {
+		panic("Invalid Subnet Mask")
+	}
 	netInt := ipInt & maskInt
 
 	networkAddress := backtoIP4(netInt)
