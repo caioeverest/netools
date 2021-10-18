@@ -1,7 +1,7 @@
 # Net tools
 A collection of CLI utilities.
 
-This project focuses on developing network utilities that would be useful for IT professionals and also educational tools for the tech savvy.
+This project focuses on developing network utilities that would be useful for IT professionals.
 
 All ideas are encouraged! If you find any idea for a utility that would be useful, please propose the feature by opening an issue.
 
