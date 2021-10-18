@@ -17,6 +17,8 @@ All ideas are encouraged! If you find any idea for a utility that would be usefu
 - Work time tracker (Open issue)
 - More to come...
 
+### Usage
+Run `make` command to build netools binary.
 
 ### Contribute
 To contribute, fork this repository, commit the changes and create a pull request.
