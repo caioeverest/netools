@@ -16,3 +16,9 @@ All ideas are encouraged! If you find any idea for a utility that would be usefu
 - Google from terminal (Open issue)
 - Work time tracker (Open issue)
 - More to come...
+
+
+### Contribute
+To contribute, fork this repository, commit the changes and create a pull request.
+
+
