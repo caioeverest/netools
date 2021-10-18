@@ -1,6 +1,7 @@
 package route
 
 import (
+	"encoding/binary"
 	"fmt"
 	"net"
 
@@ -9,12 +10,8 @@ import (
 	"netools/pkg/util/subnet"
 )
 
-const (
-	cliInvalidArgsErr = "invalid arguments provided for subnet calculate cmd"
-)
-
 // CmdCalculateSubnet to represent command: ./netools subnet calculate -i <ip address> -s <subnet mask>"
-var CmdCalculateSubnet = &cobra.Command{
+var cmdSubnetCalculate = &cobra.Command{
 	Use:   "calculate",
 	Short: "CLI for subnet calculation operations",
 	Long:  "CLI for subnet calculation operations",
@@ -32,7 +29,13 @@ var CmdCalculateSubnet = &cobra.Command{
 		}
 
 		if net.ParseIP(ipAddress) == nil || net.ParseIP(subnetMask) == nil {
-			fmt.Println(cliInvalidArgsErr)
+			fmt.Println(errInvalidArgIpAddress)
+			return
+		}
+
+		maskInt := binary.BigEndian.Uint32(net.ParseIP(subnetMask)[12:16])
+		if !subnet.IsValidSubnetMask(maskInt) {
+			fmt.Println(errInvalidArgSubnetMask)
 			return
 		}
 

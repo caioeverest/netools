@@ -50,9 +50,6 @@ func IsValidSubnetMask(n uint32) bool {
 func Calculate(ipAddress, subnetMask string) (string, string, int, string, int) {
 	ipInt := binary.BigEndian.Uint32(net.ParseIP(ipAddress)[12:16])
 	maskInt := binary.BigEndian.Uint32(net.ParseIP(subnetMask)[12:16])
-	if !IsValidSubnetMask(maskInt) {
-		panic("Invalid Subnet Mask")
-	}
 	netInt := ipInt & maskInt
 
 	networkAddress := backtoIP4(netInt)
