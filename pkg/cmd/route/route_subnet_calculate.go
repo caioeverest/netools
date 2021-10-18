@@ -10,7 +10,8 @@ import (
 	"netools/pkg/util/subnet"
 )
 
-// CmdCalculateSubnet to represent command: ./netools subnet calculate -i <ip address> -s <subnet mask>"
+// cmdSubnetCalculate represents
+// "subnet calculate -i <ip address> -s <subnet mask>"
 var cmdSubnetCalculate = &cobra.Command{
 	Use:   "calculate",
 	Short: "CLI for subnet calculation operations",

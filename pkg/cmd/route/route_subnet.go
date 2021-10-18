@@ -2,7 +2,8 @@ package route
 
 import "github.com/spf13/cobra"
 
-// CmdSubnet to represent command: ./netools subnet
+// cmdSubnet represents
+// "subnet"
 var cmdSubnet = &cobra.Command{
 	Use:   "subnet",
 	Short: "Subnet CLI utility",
