@@ -16,13 +16,13 @@ var cmdSubnetCalculate = &cobra.Command{
 	Short: "CLI for subnet calculation operations",
 	Long:  "CLI for subnet calculation operations",
 	Run: func(cmd *cobra.Command, args []string) {
-		ipAddress, err := cmd.Flags().GetString("ipAddress")
+		ipAddress, err := cmd.Flags().GetString(flagIpaddress)
 		if err != nil {
 			fmt.Println(err)
 			return
 		}
 
-		subnetMask, err := cmd.Flags().GetString("subnetMask")
+		subnetMask, err := cmd.Flags().GetString(flagSubnetMask)
 		if err != nil {
 			fmt.Println(err)
 			return

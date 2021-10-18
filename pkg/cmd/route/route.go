@@ -5,6 +5,9 @@ import "github.com/spf13/cobra"
 const (
 	errInvalidArgIpAddress  = "invalid ip address is provided"
 	errInvalidArgSubnetMask = "invalid subnet mask is provided"
+
+	flagIpaddress  = "ipAddress"
+	flagSubnetMask = "subnetMask"
 )
 
 func Initialize(cmd *cobra.Command) {
@@ -15,10 +18,10 @@ func Initialize(cmd *cobra.Command) {
 	cmdSubnet.AddCommand(cmdSubnetCalculate)
 
 	// Level 2 arg flags
-	cmdSubnetCalculate.PersistentFlags().StringP("ipAddress", "i", "", "ip address")
-	cmdSubnetCalculate.PersistentFlags().StringP("subnetMask", "s", "", "subnet mask")
+	cmdSubnetCalculate.PersistentFlags().StringP(flagIpaddress, "i", "", "ip address")
+	cmdSubnetCalculate.PersistentFlags().StringP(flagSubnetMask, "s", "", "subnet mask")
 
 	// Level 2 arg flags marked as required
-	_ = cmdSubnetCalculate.MarkPersistentFlagRequired("ipAddress")
-	_ = cmdSubnetCalculate.MarkPersistentFlagRequired("subnetMask")
+	_ = cmdSubnetCalculate.MarkPersistentFlagRequired(flagIpaddress)
+	_ = cmdSubnetCalculate.MarkPersistentFlagRequired(flagSubnetMask)
 }
